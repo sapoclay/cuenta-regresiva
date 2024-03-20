@@ -76,27 +76,37 @@ function iniciarCuentaRegresiva() {
   
   
   function activarAlerta() {
-      // Ocultar el botón de pausar
-  pausarBtn.style.display = "none";
-      // Mostrar una notificación llamativa
-  var notification = new Notification("¡Tiempo terminado!", {
-    body: "Haz clic aquí para volver a la pestaña.",
-    icon: "icono.png" // Cambia "icono.png" por la ruta de tu propio icono si lo deseas
-  });
-
-  // Hacer que la pestaña destaque
-  var intervaloParpadeo = setInterval(function() {
-    document.title = (document.title === "¡Hazme caso!") ? " " : "¡Hazme caso!";
-  }, 1000);
-
-  // Manejar el clic en la notificación
-  notification.onclick = function() {
-    clearInterval(intervaloParpadeo); // Detener el parpadeo
-    document.title = "Cuenta regresiva"; // Restaurar el título de la página
-    window.focus(); // Poner la pestaña en primer plano
-    this.close(); // Cerrar la notificación
-  };
-}
+    // Ocultar el botón de pausar
+    pausarBtn.style.display = "none";
+    
+    // Mostrar el botón de reanudar
+    reanudarBtn.style.display = "inline";
+  
+    // Mostrar el mensaje de "Tiempo terminado"
+    cuentaAtras.innerHTML = "¡Tiempo terminado!";
+  
+    // Mostrar una notificación llamativa
+    var notification = new Notification("¡Tiempo terminado!", {
+      body: "Haz clic aquí para volver a la pestaña.",
+      icon: "icono.png" // Cambia "icono.png" por la ruta de tu propio icono si lo deseas
+    });
+  
+    // Hacer que la pestaña destaque
+    var intervaloParpadeo = setInterval(function() {
+      document.title = (document.title === "¡Hazme caso!") ? " " : "¡Hazme caso!";
+    }, 1000);
+  
+    // Manejar el clic en la notificación
+    notification.onclick = function() {
+      clearInterval(intervaloParpadeo); // Detener el parpadeo
+      document.title = "Cuenta regresiva"; // Restaurar el título de la página
+      window.focus(); // Poner la pestaña en primer plano
+      this.close(); // Cerrar la notificación
+    };
+  
+    // Detener la cuenta atrás y mostrar el mensaje de "Tiempo terminado"
+    clearInterval(intervalo);
+  }
 
 function detenerSirena() {
   sirenaAudio.pause();
