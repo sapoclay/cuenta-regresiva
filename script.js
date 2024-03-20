@@ -76,6 +76,8 @@ function reanudarCuentaAtras() {
 }
 
 function activarAlerta() {
+    // Ocultar el botón de pausar
+  pausarBtn.style.display = "none";
   // Mostrar una notificación llamativa
   var notification = new Notification("¡Tiempo terminado!", {
     body: "Haz clic aquí para volver a la pestaña.",
