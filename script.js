@@ -83,7 +83,7 @@ function iniciarCuentaRegresiva() {
     reanudarBtn.style.display = "inline";
   
     // Mostrar el mensaje de "Tiempo terminado"
-    cuentaAtras.innerHTML = "¡Tiempo terminado!";
+    cuentaAtras.innerHTML = "¡Deja de dar la lata! ¡Se acabó el tiempo!";
   
     // Mostrar una notificación llamativa
     var notification = new Notification("¡Tiempo terminado!", {
