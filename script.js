@@ -111,6 +111,8 @@ function detenerSirena() {
   detenerSirenaBtn.style.display = "none"; // Ocultar el botón de detener sirena
   cuentaAtras.classList.remove("mensaje-crecimiento"); // Quitar la animación de crecimiento al mensaje
   cuentaAtras.innerHTML = ""; // Limpiar el mensaje
+  // Recargar la página después de detener la alarma
+  location.reload();
 }
 
 document.getElementById("boton-refrescar").addEventListener("click", function() {
