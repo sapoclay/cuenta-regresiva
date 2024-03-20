@@ -37,7 +37,7 @@ function iniciarCuentaRegresiva() {
     if (tiempoTotal <= 0) {
         clearInterval(intervalo);
         var mensajeTiempoTerminado = document.getElementById("mensaje-tiempo-terminado");
-        mensajeTiempoTerminado.innerHTML = "¡Tiempo terminado!"; // Establecer el texto "Tiempo terminado" en el nuevo div
+        mensajeTiempoTerminado.innerHTML = "¡Termina ya que la gente se quiere ir!"; // Establecer el texto en el div mensaje-tiempo-terminado
         sirenaAudio.play();
         document.body.classList.add("fondo-rojo"); // Cambiar el color de fondo del cuerpo a rojo
         sirenaAudio.loop = true; // Establecer el bucle de repetición
@@ -80,7 +80,7 @@ function activarAlerta() {
   pausarBtn.style.display = "none";
 
   // Mostrar una notificación llamativa
-  var notification = new Notification("¡Tiempo terminado!", {
+  var notification = new Notification("¡Acaba YA!!", {
     body: "Haz clic aquí para volver a la pestaña.",
     icon: "icono.png" // Cambia "icono.png" por la ruta de tu propio icono si lo deseas
   });
@@ -107,8 +107,7 @@ function detenerSirena() {
     document.getElementById("formulario-tiempo").style.display = "block"; // Mostrar el formulario al detener la alarma
     document.getElementById("inicioCuenta").style.display = "inline"; // Mostrar el botón de inicio
     document.getElementById("lineaInf").style.display = "block"; // Mostrar la línea inferior
-    
-    
+     
   
     // Restablecer la cuenta atrás
     tiempoTotal = 0;
