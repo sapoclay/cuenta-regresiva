@@ -29,24 +29,24 @@ function iniciarCuentaRegresiva() {
     document.getElementById("formulario-tiempo").style.display = "none"; // Ocultar el formulario al iniciar la cuenta regresiva
     document.getElementById("inicioCuenta").style.display = "none"; // Ocultar el botón de inicio
     document.getElementById("lineaInf").style.display = "none"; // Ocultar la línea inferior
-  
 
     // Actualizar la cuenta atrás en el formato HH:MM:SS
     cuentaAtras.innerHTML = horasRestantes.toString().padStart(2, '0') + ":" + minutosRestantes.toString().padStart(2, '0') + ":" + segundosRestantes.toString().padStart(2, '0');
 
     // Si el tiempo restante es igual o menor que cero, detener el intervalo y activar la alarma
     if (tiempoTotal <= 0) {
-      clearInterval(intervalo);
-      cuentaAtras.innerHTML = "¡Tiempo terminado!";
-      sirenaAudio.play();
-      document.body.classList.add("fondo-rojo"); // Cambiar el color de fondo del cuerpo a rojo
-      sirenaAudio.loop = true; // Establecer el bucle de repetición
-      detenerSirenaBtn.style.display = "inline"; // Mostrar el botón de detener sirena
-      cuentaAtras.classList.add("mensaje-crecimiento"); // Agregar animación de crecimiento al mensaje
-      activarAlerta(); // Activar la alerta de notificación
-    } else {
-      tiempoTotal--; // Disminuir el tiempo restante en cada iteración del intervalo
-    }
+        clearInterval(intervalo);
+        var mensajeTiempoTerminado = document.getElementById("mensaje-tiempo-terminado");
+        mensajeTiempoTerminado.innerHTML = "¡Tiempo terminado!"; // Establecer el texto "Tiempo terminado" en el nuevo div
+        sirenaAudio.play();
+        document.body.classList.add("fondo-rojo"); // Cambiar el color de fondo del cuerpo a rojo
+        sirenaAudio.loop = true; // Establecer el bucle de repetición
+        detenerSirenaBtn.style.display = "inline"; // Mostrar el botón de detener sirena
+        cuentaAtras.classList.add("mensaje-crecimiento"); // Agregar animación de crecimiento al mensaje
+        activarAlerta(); // Activar la alerta de notificación
+      } else {
+        tiempoTotal--; // Disminuir el tiempo restante en cada iteración del intervalo
+      }
 
     // Cambiar el color de la cuenta atrás si faltan menos de 60 segundos
     if (tiempoTotal < 60) {
@@ -76,41 +76,47 @@ function reanudarCuentaAtras() {
 }
 
 function activarAlerta() {
-    // Ocultar el botón de pausar
-    pausarBtn.style.display = "none";
-  
-    // Mostrar una notificación llamativa
-    var notification = new Notification("¡Tiempo terminado!", {
-      body: "Haz clic aquí para volver a la pestaña.",
-      icon: "icono.png" // Cambia "icono.png" por la ruta de tu propio icono si lo deseas
-    });
-  
-    // Hacer que la pestaña destaque
-    var intervaloParpadeo = setInterval(function() {
-      document.title = (document.title === "¡Hazme caso!") ? " " : "¡Hazme caso!";
-    }, 1000);
-  
-    // Manejar el clic en la notificación
-    notification.onclick = function() {
-      clearInterval(intervaloParpadeo); // Detener el parpadeo
-      document.title = "Cuenta regresiva"; // Restaurar el título de la página
-      window.focus(); // Poner la pestaña en primer plano
-      this.close(); // Cerrar la notificación
-    };
-  }
+  // Ocultar el botón de pausar
+  pausarBtn.style.display = "none";
+
+  // Mostrar una notificación llamativa
+  var notification = new Notification("¡Tiempo terminado!", {
+    body: "Haz clic aquí para volver a la pestaña.",
+    icon: "icono.png" // Cambia "icono.png" por la ruta de tu propio icono si lo deseas
+  });
+
+  // Hacer que la pestaña destaque
+  var intervaloParpadeo = setInterval(function() {
+    document.title = (document.title === "¡Hazme caso!") ? " " : "¡Hazme caso!";
+  }, 1000);
+
+  // Manejar el clic en la notificación
+  notification.onclick = function() {
+    clearInterval(intervaloParpadeo); // Detener el parpadeo
+    document.title = "Cuenta regresiva"; // Restaurar el título de la página
+    window.focus(); // Poner la pestaña en primer plano
+    this.close(); // Cerrar la notificación
+  };
+}
 
 function detenerSirena() {
     sirenaAudio.pause();
+    // Ocultar el mensaje "Tiempo terminado"
+    cuentaAtras.innerHTML = "";
     document.body.classList.remove("fondo-rojo");
     document.getElementById("formulario-tiempo").style.display = "block"; // Mostrar el formulario al detener la alarma
-    document.getElementById("inicioCuenta").style.display = "inline"; // Mostrar el formulario al detener la alarma
-    document.getElementById("lineaInf").style.display = "block"; // Mostrar la línea inferios
-    sirenaAudio.currentTime = 0;
-    sirenaAudio.loop = false; // Desactivar el bucle de repetición
-    detenerSirenaBtn.style.display = "none"; // Ocultar el botón de detener sirena
-    cuentaAtras.classList.remove("mensaje-crecimiento"); // Quitar la animación de crecimiento al mensaje
-    cuentaAtras.innerHTML = ""; // Limpiar el mensaje
+    document.getElementById("inicioCuenta").style.display = "inline"; // Mostrar el botón de inicio
+    document.getElementById("lineaInf").style.display = "block"; // Mostrar la línea inferior
     
+    
+  
+    // Restablecer la cuenta atrás
+    tiempoTotal = 0;
+    tiempoRestante = 0;
+  
+    // Detener el parpadeo del título
+    document.title = "Cuenta regresiva"; // Restaurar el título de la página
+  
     // Recargar la página después de detener la alarma
-    location.reload();
+    location.reload(); // Opcional: puedes descomentar esta línea si deseas recargar la página
   }
