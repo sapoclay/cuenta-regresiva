@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuenta regresiva</title>
+<link rel="icon" type="image/png" href="icono.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Contenedor -->
+<div class="container">
+  <h1>Cuenta regresiva</h1>
+  <hr/>
+  <div id="formulario-tiempo">
+    <label for="horas">Horas:</label>
+    <input type="number" id="horas" min="0" value="0">
+    <label for="minutos">Minutos:</label>
+    <input type="number" id="minutos" min="0" max="59" value="0">
+    <label for="segundos">Segundos:</label>
+    <input type="number" id="segundos" min="0" max="59" value="0">
+  </div>
+  <hr id="lineaInf"/>
+  <!-- Botones con llamadas a JS -->
+  <button id="inicioCuenta" title="Iniciar la cuenta regresiva" onclick="iniciarCuentaRegresiva()">Iniciar</button>
+  <button id="boton-refrescar" title="Recargar la página">Refrescar</button>
+  <button id="pausarCuenta" style="display: none;">Pausar</button>
+  <button id="detenerSirenaBtn" style="display:none" onclick="detenerSirena()">Detener Sirena</button>
+  <!-- Contenedor para mostrar la cuenta atrás-->
+  <div id="cuenta-atras" class="cuenta-atras"></div>
+</div>
+<!-- Archivo de audio -->
+<audio id="sirena" src="sirena.mp3"></audio>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+/* Contenedor */
+.container {
+  text-align: center;
+  margin-top: 75px;
+}
+
+/* Números introducidos por el usuario */
+input[type="number"] {
+  font-size: 20px; /* Tamaño de fuente más grande */
+  padding: 10px; /* Espacio interno mayor */
+  width: 80px; /* Ancho mayor */
+}
+
+/* Números de la cuentaAtrás*/
+#cuenta-atras {
+  font-size: 60px;
+  margin-top: 20px;
+}
+
+/* Cambio de fondo y de color de texto cuando suene la alarma */
+.fondo-rojo {
+  background-color: rgb(255, 0, 0);
+  color: #fff;
+}
+
+/* Labels */
+#formulario-tiempo > label:nth-child(3),  #formulario-tiempo > label:nth-child(5){
+  font-weight: bold;
+  margin-left: 60px;
+}
+
+#formulario-tiempo > label:nth-child(1){
+  font-weight: bold;
+}
+
+/* Líneas horizontales */
+.container > hr{
+  width: 80%;
+}
+
+/* Botones */
+#inicioCuenta, #detenerSirenaBtn, #boton-refrescar, #pausarCuenta {
+  background-color: #4CAF50; /* Color de fondo verde */
+  border: 1px solid #000;
+  font-weight: bold;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 35px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+#inicioCuenta:hover, #detenerSirenaBtn:hover, #boton-refrescar:hover, #pausarCuenta:hover {
+  background-color: #45a049; /* Cambio de color de fondo al pasar el mouse */
+}
+
+#inicioCuenta:active, #detenerSirenaBtn:active, #boton-refrescar:active, #pausarCuenta:active {
+  background-color: #3e8e41; /* Cambio de color de fondo al hacer clic */
+}
+
+
+/* Animación del mensaje*/
+@keyframes crecerDecrecer {
+  0% {
+    font-size: 24px;
+  }
+  50% {
+    font-size: 64px;
+  }
+  100% {
+    font-size: 24px;
+  }
+}
+
+/* Tiempo de animación */
+.mensaje-crecimiento {
+  animation: crecerDecrecer 2s infinite;
+}
