@@ -5,7 +5,7 @@ que cuando llega a 0 te avisa mediante un sonido de sirena. En Ubuntu las notifi
 
 Como digo esto es algo muy básico, que para lo que yo lo quiero funciona perfectamente, aun que se pueden pulir un millón de cosas para que sea más eficiente.
 
-A continuacińo algunas capturas de pantalla:
+A continuación algunas capturas de pantalla:
 
 ![cuenta-regresiva](https://github.com/sapoclay/cuenta-regresiva/assets/6242827/3117e6bd-6075-4be3-bd11-0170ba519751)
 
