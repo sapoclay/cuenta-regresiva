@@ -117,5 +117,5 @@ function detenerSirena() {
     document.title = "Cuenta regresiva"; // Restaurar el título de la página
   
     // Recargar la página después de detener la alarma
-    location.reload(); // Opcional: puedes comentar esta línea si deseas recargar la página
+    location.reload(); // Opcional: puedes comentar esta línea si no deseas recargar la página
   }
